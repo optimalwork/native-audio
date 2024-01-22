@@ -81,8 +81,9 @@ On iOS, Android and Web, no further steps are needed.
 
 No configuration required for this plugin.
 <docgen-config>
-
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+
 
 </docgen-config>
 
@@ -228,7 +229,8 @@ configure(options: ConfigureOptions) => Promise<void>
 | ------------- | ------------------------------------------------------------- |
 | **`options`** | <code><a href="#configureoptions">ConfigureOptions</a></code> |
 
----
+--------------------
+
 
 ### preload(...)
 
@@ -240,7 +242,8 @@ preload(options: PreloadOptions) => Promise<void>
 | ------------- | --------------------------------------------------------- |
 | **`options`** | <code><a href="#preloadoptions">PreloadOptions</a></code> |
 
----
+--------------------
+
 
 ### play(...)
 
@@ -252,7 +255,8 @@ play(options: { assetId: string; time?: number; delay?: number; }) => Promise<vo
 | ------------- | ---------------------------------------------------------------- |
 | **`options`** | <code>{ assetId: string; time?: number; delay?: number; }</code> |
 
----
+--------------------
+
 
 ### pause(...)
 
@@ -264,7 +268,8 @@ pause(options: { assetId: string; }) => Promise<void>
 | ------------- | --------------------------------- |
 | **`options`** | <code>{ assetId: string; }</code> |
 
----
+--------------------
+
 
 ### resume(...)
 
@@ -276,7 +281,8 @@ resume(options: { assetId: string; }) => Promise<void>
 | ------------- | --------------------------------- |
 | **`options`** | <code>{ assetId: string; }</code> |
 
----
+--------------------
+
 
 ### loop(...)
 
@@ -288,7 +294,8 @@ loop(options: { assetId: string; }) => Promise<void>
 | ------------- | --------------------------------- |
 | **`options`** | <code>{ assetId: string; }</code> |
 
----
+--------------------
+
 
 ### stop(...)
 
@@ -300,7 +307,8 @@ stop(options: { assetId: string; }) => Promise<void>
 | ------------- | --------------------------------- |
 | **`options`** | <code>{ assetId: string; }</code> |
 
----
+--------------------
+
 
 ### unload(...)
 
@@ -312,7 +320,8 @@ unload(options: { assetId: string; }) => Promise<void>
 | ------------- | --------------------------------- |
 | **`options`** | <code>{ assetId: string; }</code> |
 
----
+--------------------
+
 
 ### setVolume(...)
 
@@ -324,7 +333,8 @@ setVolume(options: { assetId: string; volume: number; }) => Promise<void>
 | ------------- | ------------------------------------------------- |
 | **`options`** | <code>{ assetId: string; volume: number; }</code> |
 
----
+--------------------
+
 
 ### setRate(...)
 
@@ -336,7 +346,8 @@ setRate(options: { assetId: string; rate: number; }) => Promise<void>
 | ------------- | ----------------------------------------------- |
 | **`options`** | <code>{ assetId: string; rate: number; }</code> |
 
----
+--------------------
+
 
 ### getCurrentTime(...)
 
@@ -350,7 +361,8 @@ getCurrentTime(options: { assetId: string; }) => Promise<{ currentTime: number; 
 
 **Returns:** <code>Promise&lt;{ currentTime: number; }&gt;</code>
 
----
+--------------------
+
 
 ### getDuration(...)
 
@@ -364,7 +376,8 @@ getDuration(options: { assetId: string; }) => Promise<{ duration: number; }>
 
 **Returns:** <code>Promise&lt;{ duration: number; }&gt;</code>
 
----
+--------------------
+
 
 ### isPlaying(...)
 
@@ -378,7 +391,8 @@ isPlaying(options: { assetId: string; }) => Promise<{ isPlaying: boolean; }>
 
 **Returns:** <code>Promise&lt;{ isPlaying: boolean; }&gt;</code>
 
----
+--------------------
+
 
 ### addListener('complete', ...)
 
@@ -397,9 +411,11 @@ Listen for complete event
 
 **Since:** 5.0.0
 
----
+--------------------
+
 
 ### Interfaces
+
 
 #### ConfigureOptions
 
@@ -408,6 +424,7 @@ Listen for complete event
 | **`fade`**       | <code>boolean</code> |
 | **`focus`**      | <code>boolean</code> |
 | **`background`** | <code>boolean</code> |
+
 
 #### PreloadOptions
 
@@ -419,11 +436,13 @@ Listen for complete event
 | **`audioChannelNum`** | <code>number</code>  |
 | **`isUrl`**           | <code>boolean</code> |
 
+
 #### PluginListenerHandle
 
 | Prop         | Type                                      |
 | ------------ | ----------------------------------------- |
 | **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
+
 
 #### CompletedEvent
 
@@ -431,7 +450,9 @@ Listen for complete event
 | ------------- | ------------------- | -------------------------- | ----- |
 | **`assetId`** | <code>string</code> | Emit when a play completes | 5.0.0 |
 
+
 ### Type Aliases
+
 
 #### CompletedListener
 
