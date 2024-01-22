@@ -22,7 +22,7 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
         self.fadeMusic = false
 
         do {
-            try self.session.setCategory(AVAudioSession.Category.playback, options: .mixWithOthers)
+            // try self.session.setCategory(AVAudioSession.Category.playback, options: .mixWithOthers)
             try self.session.setActive(false)
         } catch {
             print("Failed to set session category")
@@ -34,18 +34,18 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
             self.fadeMusic = fade
         }
 
-        let focus = call.getBool(Constant.FocusAudio) ?? false
-        do {
-            if focus {
-                try self.session.setCategory(AVAudioSession.Category.playback, options: .duckOthers)
+        // let focus = call.getBool(Constant.FocusAudio) ?? false
+        // do {
+        //     if focus {
+        //         try self.session.setCategory(AVAudioSession.Category.playback, options: .duckOthers)
 
-            }
+        //     }
 
-        } catch {
+        // } catch {
 
-            print("Failed to set setCategory audio")
+        //     print("Failed to set setCategory audio")
 
-        }
+        // }
 
         let background = call.getBool(Constant.Background) ?? false
 
@@ -63,37 +63,37 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
 
         }
 
-        let ignoreSilent = call.getBool(Constant.IgnoreSilent) ?? true
+        // let ignoreSilent = call.getBool(Constant.IgnoreSilent) ?? true
 
-        do {
+        // do {
 
-            if ignoreSilent == false {
+        //     if ignoreSilent == false {
 
-                if let focus = call.getBool(Constant.FocusAudio) {
+        //         if let focus = call.getBool(Constant.FocusAudio) {
 
-                    do {
+        //             do {
 
-                        if focus {
+        //                 if focus {
 
-                            try self.session.setCategory(AVAudioSession.Category.ambient, options: .duckOthers)
+        //                     try self.session.setCategory(AVAudioSession.Category.ambient, options: .duckOthers)
 
-                        } else {
+        //                 } else {
 
-                            try self.session.setCategory(
-                                AVAudioSession.Category.ambient, options: .mixWithOthers)
+        //                     try self.session.setCategory(
+        //                         AVAudioSession.Category.ambient, options: .mixWithOthers)
 
-                        }
+        //                 }
 
-                    } catch {
+        //             } catch {
 
-                        print("Failed to set setCategory audio")
+        //                 print("Failed to set setCategory audio")
 
-                    }
+        //             }
 
-                }
+        //         }
 
-            }
-        }
+        //     }
+        // }
         call.resolve()
     }
 
