@@ -34,18 +34,19 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
             self.fadeMusic = fade
         }
 
-        // let focus = call.getBool(Constant.FocusAudio) ?? false
-        // do {
-        //     if focus {
-        //         try self.session.setCategory(AVAudioSession.Category.playback, options: .duckOthers)
+        let focus = call.getBool(Constant.FocusAudio) ?? false
+        do {
+            if focus {
+                try self.session.setCategory(AVAudioSession.Category.playback, options: .mixWithOthers)
+            } else {
+                try self.session.setCategory(AVAudioSession.Category.playback, options: .duckOthers)
+            }
 
-        //     }
+        } catch {
 
-        // } catch {
+            print("Failed to set setCategory audio")
 
-        //     print("Failed to set setCategory audio")
-
-        // }
+        }
 
         let background = call.getBool(Constant.Background) ?? false
 
