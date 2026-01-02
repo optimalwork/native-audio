@@ -1,4 +1,4 @@
-import type { PluginListenerHandle } from "@capacitor/core";
+import type { PluginListenerHandle } from '@capacitor/core';
 export interface CompletedEvent {
     /**
      * Emit when a play completes
@@ -59,7 +59,7 @@ export interface NativeAudio {
      *
      * @since 5.0.0
      */
-    addListener(eventName: "complete", listenerFunc: CompletedListener): Promise<PluginListenerHandle> & PluginListenerHandle;
+    addListener(eventName: 'complete', listenerFunc: CompletedListener): Promise<PluginListenerHandle>;
 }
 export interface ConfigureOptions {
     fade?: boolean;

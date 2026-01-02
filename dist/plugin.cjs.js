@@ -2,7 +2,7 @@
 
 var core = require('@capacitor/core');
 
-const NativeAudio$1 = core.registerPlugin("NativeAudio", {
+const NativeAudio = core.registerPlugin("NativeAudio", {
     web: () => Promise.resolve().then(function () { return web; }).then((m) => new m.NativeAudioWeb()),
 });
 
@@ -125,13 +125,12 @@ class NativeAudioWeb extends core.WebPlugin {
 }
 NativeAudioWeb.FILE_LOCATION = "";
 NativeAudioWeb.AUDIO_ASSET_BY_ASSET_ID = new Map();
-const NativeAudio = new NativeAudioWeb();
+new NativeAudioWeb();
 
 var web = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    NativeAudio: NativeAudio,
     NativeAudioWeb: NativeAudioWeb
 });
 
-exports.NativeAudio = NativeAudio$1;
+exports.NativeAudio = NativeAudio;
 //# sourceMappingURL=plugin.cjs.js.map

@@ -219,7 +219,7 @@
       },
       {
         "name": "addListener",
-        "signature": "(eventName: \"complete\", listenerFunc: CompletedListener) => Promise<PluginListenerHandle> & PluginListenerHandle",
+        "signature": "(eventName: 'complete', listenerFunc: CompletedListener) => Promise<PluginListenerHandle>",
         "parameters": [
           {
             "name": "eventName",
@@ -232,7 +232,7 @@
             "type": "CompletedListener"
           }
         ],
-        "returns": "Promise<PluginListenerHandle> & PluginListenerHandle",
+        "returns": "Promise<PluginListenerHandle>",
         "tags": [
           {
             "name": "since",
@@ -244,7 +244,7 @@
           "PluginListenerHandle",
           "CompletedListener"
         ],
-        "slug": "addlistenercomplete"
+        "slug": "addlistenercomplete-"
       }
     ],
     "properties": []

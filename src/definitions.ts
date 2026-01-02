@@ -1,4 +1,4 @@
-import type { PluginListenerHandle } from "@capacitor/core";
+import type { PluginListenerHandle } from '@capacitor/core';
 
 export interface CompletedEvent {
   /**
@@ -13,11 +13,7 @@ export type CompletedListener = (state: CompletedEvent) => void;
 export interface NativeAudio {
   configure(options: ConfigureOptions): Promise<void>;
   preload(options: PreloadOptions): Promise<void>;
-  play(options: {
-    assetId: string;
-    time?: number;
-    delay?: number;
-  }): Promise<void>;
+  play(options: { assetId: string; time?: number; delay?: number }): Promise<void>;
   pause(options: { assetId: string }): Promise<void>;
   resume(options: { assetId: string }): Promise<void>;
   loop(options: { assetId: string }): Promise<void>;
@@ -25,9 +21,7 @@ export interface NativeAudio {
   unload(options: { assetId: string }): Promise<void>;
   setVolume(options: { assetId: string; volume: number }): Promise<void>;
   setRate(options: { assetId: string; rate: number }): Promise<void>;
-  getCurrentTime(options: {
-    assetId: string;
-  }): Promise<{ currentTime: number }>;
+  getCurrentTime(options: { assetId: string }): Promise<{ currentTime: number }>;
   getDuration(options: { assetId: string }): Promise<{ duration: number }>;
   isPlaying(options: { assetId: string }): Promise<{ isPlaying: boolean }>;
   /**
@@ -35,10 +29,7 @@ export interface NativeAudio {
    *
    * @since 5.0.0
    */
-  addListener(
-    eventName: "complete",
-    listenerFunc: CompletedListener
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+  addListener(eventName: 'complete', listenerFunc: CompletedListener): Promise<PluginListenerHandle>;
 }
 
 export interface ConfigureOptions {

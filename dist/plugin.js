@@ -1,7 +1,7 @@
 var capacitorApp = (function (exports, core) {
     'use strict';
 
-    const NativeAudio$1 = core.registerPlugin("NativeAudio", {
+    const NativeAudio = core.registerPlugin("NativeAudio", {
         web: () => Promise.resolve().then(function () { return web; }).then((m) => new m.NativeAudioWeb()),
     });
 
@@ -124,15 +124,14 @@ var capacitorApp = (function (exports, core) {
     }
     NativeAudioWeb.FILE_LOCATION = "";
     NativeAudioWeb.AUDIO_ASSET_BY_ASSET_ID = new Map();
-    const NativeAudio = new NativeAudioWeb();
+    new NativeAudioWeb();
 
     var web = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        NativeAudio: NativeAudio,
         NativeAudioWeb: NativeAudioWeb
     });
 
-    exports.NativeAudio = NativeAudio$1;
+    exports.NativeAudio = NativeAudio;
 
     return exports;
 
