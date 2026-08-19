@@ -23,7 +23,11 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
 
         do {
             // try self.session.setCategory(AVAudioSession.Category.playback, options: .mixWithOthers)
-            try self.session.setActive(false)
+            // notifyOthersOnDeactivation tells iOS to send the "interruption
+            // ended, you may resume" signal to whatever app was playing audio
+            // (e.g. Spotify auto-resumes). Without it the other app stays
+            // paused after our session lets go.
+            try self.session.setActive(false, options: .notifyOthersOnDeactivation)
         } catch {
             print("Failed to set session category")
         }
