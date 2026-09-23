@@ -22,7 +22,16 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
         self.fadeMusic = false
 
         do {
-            // try self.session.setCategory(AVAudioSession.Category.playback, options: .mixWithOthers)
+            // The category is what lets this plugin's assets (the Golden Hour
+            // white noise and timer alarm) play through the mute switch and
+            // keep going when the phone locks. capacitor-plugin-playlist used
+            // to set .playback for the whole app at launch; that activation
+            // was removed because it interrupted other apps' audio (Spotify)
+            // the moment the app opened, so this plugin now owns the category
+            // for its own playback. Setting a category does not activate the
+            // session, so nothing else playing is touched here; activation
+            // happens in play()/configure(background:) when we actually play.
+            try self.session.setCategory(.playback, options: [.mixWithOthers])
             // notifyOthersOnDeactivation tells iOS to send the "interruption
             // ended, you may resume" signal to whatever app was playing audio
             // (e.g. Spotify auto-resumes). Without it the other app stays
@@ -38,18 +47,18 @@ public class NativeAudio: CAPPlugin, AVAudioPlayerDelegate {
             self.fadeMusic = fade
         }
 
-        // let focus = call.getBool(Constant.FocusAudio) ?? false
-        // do {
-        //     if focus {
-        //         try self.session.setCategory(AVAudioSession.Category.playback, options: .duckOthers)
-
-        //     }
-
-        // } catch {
-
-        //     print("Failed to set setCategory audio")
-
-        // }
+        // focus: true → our audio takes the foreground and other apps duck
+        // (the app passes this when white noise starts); false → mix at full
+        // volume alongside whatever else is playing. Both keep .playback so
+        // the mute switch and screen lock don't silence us. Skipped when the
+        // caller doesn't mention focus, leaving the category from load().
+        if let focus = call.getBool(Constant.FocusAudio) {
+            do {
+                try self.session.setCategory(.playback, options: focus ? [.duckOthers] : [.mixWithOthers])
+            } catch {
+                print("Failed to set audio session category")
+            }
+        }
 
         let background = call.getBool(Constant.Background) ?? false
 
